@@ -31,7 +31,15 @@ export function initFiltering(elements, indexes) {
             }
         }
 
+        const filterState = {
+            ...state,
+            total: [
+                state.totalFrom === '' ? '' : Number(state.totalFrom),
+                state.totalTo === '' ? '' : Number(state.totalTo)
+            ]
+        };
+
         // @todo: #4.5 — отфильтровать данные используя компаратор
-        return data.filter(row => compare(row, state));
+        return data.filter(row => compare(row, filterState));
     }
 }
